@@ -1,4 +1,4 @@
-let ballsArray = [1, 1, 1, 2, 1, 1, 1, 1];
+let ballsArray = [1, 1, 1, 1, 1, 1, 1, 2];
 ballsArray = { ...ballsArray };
 let checkLottery = [];
 

@@ -87,7 +87,6 @@ function sortCards(cardsHand) {
     : (numberInOrder = false);
 
   let convertedCards = cardsHand.map((obj) => ({ ...obj }));
-  console.log(convertedCards);
   convertedCards.forEach((element) => {
     if (+element.value === 1) element.value = `A`;
     if (+element.value === 11) element.value = `J`;
@@ -106,6 +105,8 @@ function sortCards(cardsHand) {
 }
 
 function setChecker(sortedCards) {
+  console.log(`Test: `);
+  console.log(sortedCards.sortedCardsByValue);
   console.log(`Yours cards: `);
   console.log(sortedCards.convertedCards);
   if (
