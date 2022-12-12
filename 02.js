@@ -68,6 +68,7 @@ function sortCards(cardsHand) {
     accu[currCard.value] = accu[currCard.value] + 1 || 1;
     return accu;
   }, {});
+  console.log(duplicatedCards);
 
   //CHECK HOW MANY DUPLICATED CARDS HAVE HAND
   let duplicatedNum;
@@ -79,10 +80,14 @@ function sortCards(cardsHand) {
     {}
   );
 
+  //CHECK REPEAT
+  let noRepeat = Object.values(duplicatedCards).every((curr) => curr === 1);
+
   //CHECK IF NUMBERS ARE IN ORDER
   let numberInOrder;
-  +sortedCardsByValue[0].value + 4 === +sortedCardsByValue[4].value ||
-  +sortedCardsByValue[0].value + 12 === +sortedCardsByValue[4].value
+  noRepeat &&
+  (+sortedCardsByValue[0].value + 4 === +sortedCardsByValue[4].value ||
+    +sortedCardsByValue[0].value + 12 === +sortedCardsByValue[4].value)
     ? (numberInOrder = true)
     : (numberInOrder = false);
 
@@ -111,7 +116,8 @@ function setChecker(sortedCards) {
   console.log(sortedCards.convertedCards);
   if (
     sortedCards.sameColor &&
-    +sortedCards.sortedCardsByValue[0].value === 1 &&
+    +sortedCards.sortedCardsByValue[0].value + 12 ===
+      +sortedCards.sortedCardsByValue[4].value &&
     sortedCards.numberInOrder
   ) {
     return console.log(`You have royal flush.`);
@@ -148,11 +154,11 @@ let cardsHand = randomCards(cards);
 // TEST //
 // console.log(cardsHand);
 // cardsHand = [
-//   { value: "8", suit: "H" },
-//   { value: "9", suit: "C" },
-//   { value: "3", suit: "C" },
-//   { value: "2", suit: "C" },
-//   { value: "1", suit: "C" },
+//   { value: "8", suit: "C" },
+//   { value: "7", suit: "H" },
+//   { value: "1", suit: "H" },
+//   { value: "2", suit: "H" },
+//   { value: "10", suit: "H" },
 // ];
 // TEST END //
 
