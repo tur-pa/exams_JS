@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  margin: 1rem 0;
+}
+
+.border {
+  background-color: darkgray;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.ball {
+  background-color: brown;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.field {
+  background-color: wheat;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.collision {
+  background-color: aquamarine;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  transform: rotateY(0deg) rotate(45deg);
+}
