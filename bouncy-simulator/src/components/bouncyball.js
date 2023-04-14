@@ -7,13 +7,13 @@ function BouncyBall() {
   const inputBoard = examInput;
 
   let [startGame, setStartGame] = useState(false);
-  let [board, setBoard] = useState(inputBoard);
-  let [positRow, setPositRow] = useState(findBall(inputBoard).rowBall);
-  let [positCol, setPositCol] = useState(findBall(inputBoard).colBall);
+  let [board, setBoard] = useState(JSON.parse(JSON.stringify(inputBoard)));
+  let [positRow, setPositRow] = useState(findBall().rowBall);
+  let [positCol, setPositCol] = useState(findBall().colBall);
   let [dirRow, setDirRow] = useState(1);
   let [dirCol, setDirCol] = useState(1);
 
-  function findBall(board) {
+  function findBall() {
     let rowBall = board.findIndex((row) => row.includes("1"));
     let colBall = board[rowBall].indexOf("1");
     return { rowBall: rowBall, colBall: colBall };
@@ -52,6 +52,14 @@ function BouncyBall() {
     }
   }
 
+  function resetGame() {
+    board = JSON.parse(JSON.stringify(inputBoard));
+    setBoard(board);
+    setPositRow(findBall().rowBall);
+    setPositCol(findBall().colBall);
+    setStartGame(false);
+  }
+
   useEffect(() => {
     if (startGame) {
       const interval = setInterval(() => {
@@ -63,9 +71,16 @@ function BouncyBall() {
 
   return (
     <div className="App">
-      <div className="button">
-        <Button variant="outlined" onClick={() => setStartGame(!startGame)}>
+      <div>
+        <Button
+          style={{ margin: "1rem" }}
+          variant="outlined"
+          onClick={() => setStartGame(!startGame)}
+        >
           {startGame ? "Stop" : "Start"}
+        </Button>
+        <Button variant="outlined" onClick={() => resetGame()}>
+          Reset
         </Button>
       </div>
       <div>
